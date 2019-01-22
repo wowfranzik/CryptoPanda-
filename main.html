@@ -18,24 +18,55 @@
 
     <main>
       <section class="playground">
-        <div class="explanation">
-          <p>
-            Everybody wants to become rich with cryptocurrencies, but only few
-            of us have really understood what they are and how they work.<br />
-            Answer the questions of CryptoPanda to see if you’re ready to invest
-            in cryptos or not. If you’ll collect more PandaCoins than ShitCoins
-            you’ll win. Otherwise, better keep your money under the mattress.
-          </p>
-        </div>
+        <div class="question"><p class="par"></p></div>
+        <div class="answer"></div>
         <div class="panda-img"><img src="./images/pandacoin.png" alt="" /></div>
+        <div class="wallet">
+          <h4>Your e-wallet</h4>
+          <ul class="coins">
+            <li class="coin1"></li>
+            <li class="coin2"></li>
+            <li class="coin3"></li>
+            <li class="coin4"></li>
+            <li class="coin5"></li>
+          </ul>
+        </div>
       </section>
     </main>
     <section class="true-false">
-      <a href="./main.html"
-        ><button type="play-again" class="btn btn-outline-secondary">
-          Play Now !
-        </button></a
-      >
+      <button type="button" class="true btn btn-outline-secondary">True</button>
+      <button type="button" class="false btn btn-outline-warning">False</button>
+    </section>
+
+    <section class="game-end">
+      <div class="popup-content win-message">
+        <div>
+          <h3>
+            You Won! You're a true<br />
+            Crypto Investor!
+          </h3>
+          <a href="./main.html"
+            ><button type="play-again" class="btn btn-outline-secondary">
+              Play Again !
+            </button></a
+          >
+        </div>
+      </div>
+    </section>
+    <section class="game-end">
+      <div class="popup-content lose-message">
+        <div>
+          <h3>
+            Too many shitcoins collected,<br />
+            You Lose!
+          </h3>
+          <a href="./main.html"
+            ><button type="play-again" class="btn btn-outline-secondary">
+              Play Again !
+            </button></a
+          >
+        </div>
+      </div>
     </section>
 
     <script
