@@ -81,7 +81,7 @@ function randomQuestions() {
     var tempQuest = allQuestions[numQuest];
     allQuestions[numQuest] = allQuestions[index];
     allQuestions[index] = tempQuest;
-    //console.log(tempQuest);
+    console.log(tempQuest);
   }
 }
 
@@ -96,11 +96,11 @@ function updateQuestion() {
   }
 }
 
-function addSolution() {
-  var oneQuest = allQuestions[0];
-  $(".solution").html(oneQuest.solution);
-  $(".solution").css("display", "flex");
-}
+// function addSolution() {
+//   var oneQuest = allQuestions[0];
+//   $(".solution").html(oneQuest.solution);
+//   $(".solution").css("display", "flex");
+// }
 
 // QUESTION IS FALSE
 $(".false").click(function() {
@@ -114,16 +114,28 @@ $(".false").click(function() {
       //addSolution();
       allQuestions.shift();
       updateQuestion();
+
+      // timeOut(function() {
+      //   $(".solution").css("display", "none");
+      //   updateQuestion();
+      // }, 3000);
     } else {
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
         "url(./images/shitcoin.png)"
       );
-      console.log("clicked on false - else");
+      //console.log("clicked on false - else");
+      //addSolution();
       allQuestions.shift();
-      //addSolution
       updateQuestion();
       errorCounter++;
+      // timeOut(function() {
+      //   $(".solution").css("display", "none");
+      //     }, 3000);
+
+      //     timeOut(function(){
+      //       GameOver();
+      //     }, 3000);
     }
   }
 });
@@ -145,25 +157,26 @@ $(".true").click(function() {
       "backgroundImage",
       "url(./images/shitcoin.png)"
     );
+    //addSolution();
     allQuestions.shift();
     console.log("clicked on true - else");
-    //addSolution();
     updateQuestion();
     errorCounter++;
+    // timeOut(function(){
+    //   GameOver();
+    // },3000)
   }
 });
 
 // function GameOver() {
 //   if (errorCounter >= 3) {
-//     $(".end").css("display", "block");
-//     $(".content").css("display", "none");
+//     $(".game-end").css("display", "flex");
 //   }
 // }
 
-// function checkWin() {
-//   if (allQuestions.length === 0 && errorCounter < 3) {
+// function Win() {
+//   if (allQuestions.length === 5 && errorCounter < 3) {
 //     $(".win").css("display", "flex");
-//     $(".content").css("display", "none");
 //   }
 // }
 

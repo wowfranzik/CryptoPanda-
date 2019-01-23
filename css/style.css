@@ -86,8 +86,22 @@ ul {
   list-style-type: none;
 }
 
-/* start about popup-content and game-end*/
-.game-end {
+.game-end,
+.win {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 60%;
+  text-align: center;
+  background-color: #ffc107;
+  color: white;
+  border-radius: 4px;
+  border: 1px solid white;
+  z-index: -100;
+}
+
+/* .game-end {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,11 +110,9 @@ ul {
   width: 100%;
   height: 100%;
   z-index: -100;
-}
-.showing {
-  display: flex;
-}
-.popup-content {
+} */
+
+/* .popup-content {
   opacity: 0;
   display: flex;
   justify-content: center;
@@ -112,23 +124,4 @@ ul {
   color: white;
   border-radius: 4px;
   border: 1px solid white;
-}
-
-.showing > .popup-content {
-  animation: 1s bouncy cubic-bezier(0, 1.43, 0.99, 1.63) forwards;
-  animation-delay: 1s;
-}
-
-@keyframes bouncy {
-  0% {
-    width: 30%;
-    height: 30%;
-  }
-
-  100% {
-    opacity: 1;
-    width: 30%;
-    height: 30%;
-  }
-}
-/* end about popup-content and game-end*/
+} */
