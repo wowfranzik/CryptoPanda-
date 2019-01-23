@@ -96,14 +96,17 @@ function updateQuestion() {
   }
 }
 
-// function addSolution() {
-//   var oneQuest = allQuestions[0];
-//   $(".solution").html(oneQuest.solution);
-//   $(".solution").css("display", "flex");
-// }
+function addSolution() {
+  var oneQuest = allQuestions[0];
+  $(".solution").html(oneQuest.solution);
+  $(".solution").css("display", "flex");
+  console.log("yo");
+}
 
 // QUESTION IS FALSE
 $(".false").click(function() {
+  $(".true").css("display", "none");
+  $(".false").css("display", "none");
   if (allQuestions.length > 0) {
     if (allQuestions[0].category.includes("false")) {
       $(`ul li:nth-child(${counter})`).css(
@@ -111,74 +114,93 @@ $(".false").click(function() {
         "url(./images/truecoin.png)"
       );
       console.log("clicked on false - if");
-      //addSolution();
+      addSolution();
       allQuestions.shift();
-      updateQuestion();
 
-      // timeOut(function() {
-      //   $(".solution").css("display", "none");
-      //   updateQuestion();
-      // }, 3000);
+      setTimeout(function() {
+        $(".solution").css("display", "none");
+        $(".true").css("display", "flex");
+        $(".false").css("display", "flex");
+        updateQuestion();
+        GameOver();
+        Win();
+      }, 3000);
     } else {
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
         "url(./images/shitcoin.png)"
       );
       //console.log("clicked on false - else");
-      //addSolution();
+      addSolution();
       allQuestions.shift();
-      updateQuestion();
       errorCounter++;
-      // timeOut(function() {
-      //   $(".solution").css("display", "none");
-      //     }, 3000);
-
-      //     timeOut(function(){
-      //       GameOver();
-      //     }, 3000);
+      setTimeout(function() {
+        $(".solution").css("display", "none");
+        $(".true").css("display", "flex");
+        $(".false").css("display", "flex");
+        updateQuestion();
+        GameOver();
+        Win();
+      }, 3000);
     }
   }
 });
 
 // QUESTION IS TRUE
 $(".true").click(function() {
+  $(".true").css("display", "none");
+  $(".false").css("display", "none");
   if (allQuestions[0].category.includes("true")) {
     $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
       "url(./images/truecoin.png)"
     );
-    //addSolution();
+    addSolution();
     console.log("clicked on true - if");
     allQuestions.shift();
-    updateQuestion();
+
+    setTimeout(function() {
+      $(".solution").css("display", "none");
+      $(".true").css("display", "flex");
+      $(".false").css("display", "flex");
+      updateQuestion();
+      GameOver();
+      Win();
+    }, 3000);
   } else {
     // CLICKED ON TRUE BUT WRONG ANWSER
     $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
       "url(./images/shitcoin.png)"
     );
-    //addSolution();
+    addSolution();
     allQuestions.shift();
     console.log("clicked on true - else");
-    updateQuestion();
+
     errorCounter++;
-    // timeOut(function(){
-    //   GameOver();
-    // },3000)
+
+    setTimeout(function() {
+      $(".solution").css("display", "none");
+      $(".true").css("display", "flex");
+      $(".false").css("display", "flex");
+      updateQuestion();
+      GameOver();
+      Win();
+    }, 3000);
   }
 });
 
-// function GameOver() {
-//   if (errorCounter >= 3) {
-//     $(".game-end").css("display", "flex");
-//   }
-// }
+function GameOver() {
+  if (errorCounter >= 3) {
+    $(".game-end").css("display", "block");
+  }
+}
 
-// function Win() {
-//   if (allQuestions.length === 5 && errorCounter < 3) {
-//     $(".win").css("display", "flex");
-//   }
-// }
+function Win() {
+  if (allQuestions.length === 5 && errorCounter < 3) {
+    $(".win").css("display", "block");
+  }
+}
 
 // STEPS :
 // Validate the question (true/false)
