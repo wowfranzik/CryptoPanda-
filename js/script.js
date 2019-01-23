@@ -68,9 +68,8 @@ var allQuestions = [
 
 // function random questions
 
-var questionCounter = 0;
-var coinCounter = 0;
-// var errorCounterFinal = 0;
+var counter = 0;
+var errorCounter = 0;
 
 function randomQuestions() {
   var numQuest = allQuestions.length;
@@ -84,74 +83,89 @@ function randomQuestions() {
     allQuestions[index] = tempQuest;
     //console.log(tempQuest);
   }
-  //console.log(questionArray);
 }
+
 randomQuestions();
 updateQuestion();
 
 function updateQuestion() {
-  questionCounter++;
+  counter++;
   if (allQuestions.length > 0) {
     var oneQuest = allQuestions[0];
     $(".question").html(oneQuest.question);
-    //console.log(oneQuest);
   }
 }
 
 function addSolution() {
   var oneQuest = allQuestions[0];
-  $(".solution").html(oneQuest.question);
+  $(".solution").html(oneQuest.solution);
   $(".solution").css("display", "flex");
-  //console.log(oneQuest.solution);
 }
+
 // QUESTION IS FALSE
 $(".false").click(function() {
-  if (allQuestions[0].category.includes("false")) {
-    $(`ul li:nth-child(${coinCounter})`).css(
-      "backgroundImage",
-      "url(./images/truecoin.png)"
-    );
-    //addSolution();
-    allQuestions.shift();
-    updateQuestion();
-    questionCounter++;
-    coinCounter++;
-  } else {
-    $(`ul li:nth-child(${coinCounter})`).css(
-      "backgroundImage",
-      "url(./images/shitcoin.png)"
-    );
-    allQuestions.shift();
-    updateQuestion();
-    questionCounter++;
-    coinCounter++;
+  if (allQuestions.length > 0) {
+    if (allQuestions[0].category.includes("false")) {
+      $(`ul li:nth-child(${counter})`).css(
+        "backgroundImage",
+        "url(./images/truecoin.png)"
+      );
+      console.log("clicked on false - if");
+      //addSolution();
+      allQuestions.shift();
+      updateQuestion();
+    } else {
+      $(`ul li:nth-child(${counter})`).css(
+        "backgroundImage",
+        "url(./images/shitcoin.png)"
+      );
+      console.log("clicked on false - else");
+      allQuestions.shift();
+      //addSolution
+      updateQuestion();
+      errorCounter++;
+    }
   }
 });
 
 // QUESTION IS TRUE
 $(".true").click(function() {
   if (allQuestions[0].category.includes("true")) {
-    $(`ul li:nth-child(${coinCounter})`).css(
+    $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
       "url(./images/truecoin.png)"
     );
-    addSolution();
-    // allQuestions.shift();
+    //addSolution();
+    console.log("clicked on true - if");
+    allQuestions.shift();
     updateQuestion();
-    questionCounter++;
-    coinCounter++;
   } else {
     // CLICKED ON TRUE BUT WRONG ANWSER
-    $(`ul li:nth-child(${coinCounter})`).css(
+    $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
       "url(./images/shitcoin.png)"
     );
     allQuestions.shift();
+    console.log("clicked on true - else");
+    //addSolution();
     updateQuestion();
-    questionCounter++;
-    coinCounter++;
+    errorCounter++;
   }
 });
+
+// function GameOver() {
+//   if (errorCounter >= 3) {
+//     $(".end").css("display", "block");
+//     $(".content").css("display", "none");
+//   }
+// }
+
+// function checkWin() {
+//   if (allQuestions.length === 0 && errorCounter < 3) {
+//     $(".win").css("display", "flex");
+//     $(".content").css("display", "none");
+//   }
+// }
 
 // STEPS :
 // Validate the question (true/false)
