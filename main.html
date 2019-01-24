@@ -14,39 +14,8 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <header><h1>CryptoPanda</h1></header>
-
-    <section class="playground container">
-      <div class="row full-play">
-        <div class="left-side col-lg-5">
-          <div class="question"><p class="par"></p></div>
-          <div class="solution"></div>
-        </div>
-
-        <div class="panda-img col-lg-5">
-          <img src="./images/pandacoin.png" alt="" />
-        </div>
-
-        <div class="wallet col-lg-2">
-          <h4>Your <br />e-wallet</h4>
-          <ul class="coins">
-            <li class="coin1"></li>
-            <li class="coin2"></li>
-            <li class="coin3"></li>
-            <li class="coin4"></li>
-            <li class="coin5"></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="true-false">
-      <button type="button" class="true btn btn-outline-secondary">True</button>
-      <button type="button" class="false btn btn-outline-warning">False</button>
-    </section>
-
-    <div class="win">
-      <div>
+    <div class="body-main">
+      <div class="win">
         <h3>
           You Won! You're a true<br />
           Crypto Investor!
@@ -57,10 +26,8 @@
           </button></a
         >
       </div>
-    </div>
 
-    <div class="game-end">
-      <div>
+      <div class="game-end">
         <h3>
           Too many shitcoins collected,<br />
           You Lose!
@@ -71,8 +38,50 @@
           </button></a
         >
       </div>
-    </div>
 
+      <div class="big-div">
+        <header><h1>CryptoPanda</h1></header>
+
+        <section class="playground container">
+          <div class="row full-play">
+            <div class="left-side col-lg-6 col-sm-12 col-md-push-12">
+              <div class="question col-12"><p class="par"></p></div>
+              <div class="solution"></div>
+            </div>
+
+            <div class="panda-img col-lg-4 col-sm-12 col-md-pull-12">
+              <img src="./images/pandacoin.png" alt="" class="panda" />
+            </div>
+
+            <div class="wallet col-lg-2 col-sm-12">
+              <h4>Your <br />e-wallet</h4>
+              <ul class="coins">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="true-false">
+          <button
+            type="button"
+            class="true btn btn-outline-secondary btn-blocked"
+          >
+            True
+          </button>
+          <button
+            type="button"
+            class="false btn btn-outline-warning btn-blocked"
+          >
+            False
+          </button>
+        </section>
+      </div>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

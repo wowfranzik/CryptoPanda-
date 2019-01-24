@@ -113,8 +113,23 @@ function addSolution() {
 // QUESTION IS FALSE
 $(".false").click(function() {
   sounds[1].play();
+
+  $(".left-side").css("display", "flex");
+  $(".question")
+    .addClass("col-6")
+    .removeClass("col-12");
+  $(".solution").addClass("col-6");
+
   $(".true").css("display", "none");
   $(".false").css("display", "none");
+
+  setTimeout(function() {
+    $(".question")
+      .removeClass("col-6")
+      .addClass("col-12");
+    $(".solution").removeClass("col-6");
+  }, 500);
+
   if (allQuestions.length > 0) {
     if (allQuestions[0].category.includes("false")) {
       $(`ul li:nth-child(${counter})`).css(
@@ -132,7 +147,7 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 4500);
+      }, 500);
     } else {
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
@@ -149,15 +164,26 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 4500);
+      }, 500);
     }
   }
 });
 
 // QUESTION IS TRUE
 $(".true").click(function() {
+  $(".left-side").css("display", "flex");
+  $(".question")
+    .addClass("col-6")
+    .removeClass("col-12");
+  $(".solution").addClass("col-6");
   $(".true").css("display", "none");
   $(".false").css("display", "none");
+  setTimeout(function() {
+    $(".question")
+      .removeClass("col-6")
+      .addClass("col-12");
+    $(".solution").removeClass("col-6");
+  }, 500);
   if (allQuestions[0].category.includes("true")) {
     $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
@@ -174,7 +200,7 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 4500);
+    }, 500);
   } else {
     // CLICKED ON TRUE BUT WRONG ANWSER
     $(`ul li:nth-child(${counter})`).css(
@@ -194,20 +220,33 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 4500);
+    }, 500);
   }
 });
 
 function GameOver() {
   if (errorCounter >= 3) {
-    $(".game-end").css("display", "block");
+    $(".game-end").css("display", "flex");
+
+    disableBtn();
   }
 }
 
 function Win() {
   if (allQuestions.length === 5 && errorCounter < 3) {
-    $(".win").css("display", "block");
+    $(".win").css("display", "flex");
+    disableBtn();
   }
+}
+
+function disableBtn() {
+  // document.getElementsByClassName("btn-blocked").prop("disabled", true);
+  document.getElementsByClassName("btn-blocked").disable = true;
+}
+
+function enableBtn() {
+  // document.getElementsByClassName("btn-blocked").prop("disabled", false);
+  document.getElementsByClassName("btn-blocked").disable = true;
 }
 
 // STEPS :
