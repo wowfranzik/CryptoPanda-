@@ -16,13 +16,19 @@
   <body>
     <header><h1>CryptoPanda</h1></header>
 
-    <main>
-      <section class="playground">
-        <div class="question"><p class="par"></p></div>
-        <div class="solution"></div>
-        <div class="panda-img"><img src="./images/pandacoin.png" alt="" /></div>
-        <div class="wallet">
-          <h4>Your e-wallet</h4>
+    <section class="playground container">
+      <div class="row full-play">
+        <div class="left-side col-lg-5">
+          <div class="question"><p class="par"></p></div>
+          <div class="solution"></div>
+        </div>
+
+        <div class="panda-img col-lg-5">
+          <img src="./images/pandacoin.png" alt="" />
+        </div>
+
+        <div class="wallet col-lg-2">
+          <h4>Your <br />e-wallet</h4>
           <ul class="coins">
             <li class="coin1"></li>
             <li class="coin2"></li>
@@ -31,8 +37,8 @@
             <li class="coin5"></li>
           </ul>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
     <section class="true-false">
       <button type="button" class="true btn btn-outline-secondary">True</button>
@@ -73,7 +79,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="./js/script.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -89,5 +94,6 @@
       integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>

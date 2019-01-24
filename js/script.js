@@ -71,6 +71,13 @@ var allQuestions = [
 var counter = 0;
 var errorCounter = 0;
 
+var sounds = [
+  new Audio("../Cryptopanda/sounds/nyah.wav"),
+  new Audio("../sounds/shit.mp3")
+];
+
+//sounds[1].play();
+
 function randomQuestions() {
   var numQuest = allQuestions.length;
 
@@ -105,6 +112,7 @@ function addSolution() {
 
 // QUESTION IS FALSE
 $(".false").click(function() {
+  sounds[1].play();
   $(".true").css("display", "none");
   $(".false").css("display", "none");
   if (allQuestions.length > 0) {
@@ -124,7 +132,7 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 3000);
+      }, 4500);
     } else {
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
@@ -141,7 +149,7 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 3000);
+      }, 4500);
     }
   }
 });
@@ -166,7 +174,7 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 3000);
+    }, 4500);
   } else {
     // CLICKED ON TRUE BUT WRONG ANWSER
     $(`ul li:nth-child(${counter})`).css(
@@ -186,7 +194,7 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 3000);
+    }, 4500);
   }
 });
 
