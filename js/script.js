@@ -11,7 +11,7 @@ var allQuestions = [
       "If you lose your e-wallet there’s no way you can have back your cryptocurrencies.",
     category: "true",
     solution:
-      "<div class='sol'><p>True! James Howell lost 7.500 Bitcoins ($127 million) by throwing away his hard drive while cleaning his house.</p></div>"
+      "<div class='sol'><p>True! James Howell lost 7.500 Bitcoins ($20 million) by throwing away his hard drive while cleaning his house.</p></div>"
   },
   {
     question:
@@ -56,7 +56,7 @@ var allQuestions = [
       "In a near future you can throw away your national passport and become citizen of a borderless world.",
     category: "true",
     solution:
-      "<div class='sol'><p>I hope so! The blockchain project Bitnation already hosted the world’s first blockchain birth certificate and World Citizenship.</p></div>"
+      "<div class='sol'><p>The Bitnation project already hosted the world’s first blockchain birth certificate and World Citizenship.</p></div>"
   },
   {
     question: "Cryptokitties are a cool version of Pokemons.",
@@ -66,19 +66,17 @@ var allQuestions = [
   }
 ];
 
-// function random questions
-
 var counter = 0;
 var errorCounter = 0;
 
 var sounds = [
-  new Audio("../sounds/nyah.wav"),
-  new Audio("../sounds/pop.mp3"),
-  new Audio("../sounds/shit.mp3"),
-  new Audio("../sounds/questions.mp3")
+  new Audio("./sounds/nyah.mp3"),
+  new Audio("./sounds/pop.mp3"),
+  new Audio("./sounds/shit.mp3"),
+  new Audio("./sounds/questions.mp3")
 ];
 
-//sounds[1].play();
+// to pick random questions
 
 function randomQuestions() {
   var numQuest = allQuestions.length;
@@ -90,12 +88,13 @@ function randomQuestions() {
     var tempQuest = allQuestions[numQuest];
     allQuestions[numQuest] = allQuestions[index];
     allQuestions[index] = tempQuest;
-    //console.log(tempQuest);
   }
 }
 
 randomQuestions();
 updateQuestion();
+
+// to display the chosen question
 
 function updateQuestion() {
   counter++;
@@ -105,14 +104,13 @@ function updateQuestion() {
   }
 }
 
+// to display the solution
 function addSolution() {
   var oneQuest = allQuestions[0];
   $(".solution").html(oneQuest.solution);
   $(".solution").css("display", "flex");
-  //console.log("add solution clcked");
 }
 
-// QUESTION IS FALSE
 $(".false").click(function() {
   sounds[0].play();
 
@@ -130,17 +128,17 @@ $(".false").click(function() {
       .removeClass("col-6")
       .addClass("col-12");
     $(".solution").removeClass("col-6");
-  }, 3500);
+  }, 4000);
 
   if (allQuestions.length > 0) {
     if (allQuestions[0].category.includes("false")) {
-      sounds[3].play();
+      sounds[1].play();
 
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
         "url(./images/truecoin.png)"
       );
-      //console.log("clicked on false - if");
+
       addSolution();
       allQuestions.shift();
 
@@ -151,14 +149,14 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 3500);
+      }, 4000);
     } else {
       sounds[2].play();
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
         "url(./images/shitcoin.png)"
       );
-      //console.log("clicked on false - else");
+
       addSolution();
       allQuestions.shift();
       errorCounter++;
@@ -169,12 +167,11 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 3500);
+      }, 4000);
     }
   }
 });
 
-// QUESTION IS TRUE
 $(".true").click(function() {
   sounds[3].play();
   $(".left-side").css("display", "flex");
@@ -189,7 +186,7 @@ $(".true").click(function() {
       .removeClass("col-6")
       .addClass("col-12");
     $(".solution").removeClass("col-6");
-  }, 3500);
+  }, 4000);
   if (allQuestions[0].category.includes("true")) {
     sounds[1].play();
     $(`ul li:nth-child(${counter})`).css(
@@ -207,10 +204,8 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 3500);
+    }, 4000);
   } else {
-    // CLICKED ON TRUE BUT WRONG ANWSER
-
     sounds[2].play();
     $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
@@ -218,7 +213,6 @@ $(".true").click(function() {
     );
     addSolution();
     allQuestions.shift();
-    //console.log("clicked on true - else");
 
     errorCounter++;
 
@@ -229,7 +223,7 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 3500);
+    }, 4000);
   }
 });
 
@@ -248,13 +242,9 @@ function Win() {
 }
 
 function disableBtn() {
-  // document.getElementsByClassName("btn-blocked").prop("disabled", true);
-  // $("btn-blocked").disable = true;
-  // return ($(".btn-blocked").disable = true);
   return $(".btn-blocked").prop("disabled", true);
 }
 
 function enableBtn() {
-  // document.getElementsByClassName("btn-blocked").prop("disabled", false);
   return $(".btn-blocked").prop("disabled", false);
 }
