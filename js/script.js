@@ -128,7 +128,7 @@ $(".false").click(function() {
       .removeClass("col-6")
       .addClass("col-12");
     $(".solution").removeClass("col-6");
-  }, 4000);
+  }, 4500);
 
   if (allQuestions.length > 0) {
     if (allQuestions[0].category.includes("false")) {
@@ -149,7 +149,7 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 4000);
+      }, 4500);
     } else {
       sounds[2].play();
       $(`ul li:nth-child(${counter})`).css(
@@ -167,7 +167,7 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 4000);
+      }, 4500);
     }
   }
 });
@@ -186,7 +186,7 @@ $(".true").click(function() {
       .removeClass("col-6")
       .addClass("col-12");
     $(".solution").removeClass("col-6");
-  }, 4000);
+  }, 4500);
   if (allQuestions[0].category.includes("true")) {
     sounds[1].play();
     $(`ul li:nth-child(${counter})`).css(
@@ -204,7 +204,7 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 4000);
+    }, 4500);
   } else {
     sounds[2].play();
     $(`ul li:nth-child(${counter})`).css(
@@ -223,7 +223,7 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 4000);
+    }, 4500);
   }
 });
 
