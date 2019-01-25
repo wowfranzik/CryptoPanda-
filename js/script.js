@@ -72,8 +72,10 @@ var counter = 0;
 var errorCounter = 0;
 
 var sounds = [
-  new Audio("../Cryptopanda/sounds/nyah.wav"),
-  new Audio("../sounds/shit.mp3")
+  new Audio("../sounds/nyah.wav"),
+  new Audio("../sounds/pop.mp3"),
+  new Audio("../sounds/shit.mp3"),
+  new Audio("../sounds/questions.mp3")
 ];
 
 //sounds[1].play();
@@ -88,7 +90,7 @@ function randomQuestions() {
     var tempQuest = allQuestions[numQuest];
     allQuestions[numQuest] = allQuestions[index];
     allQuestions[index] = tempQuest;
-    console.log(tempQuest);
+    //console.log(tempQuest);
   }
 }
 
@@ -107,12 +109,12 @@ function addSolution() {
   var oneQuest = allQuestions[0];
   $(".solution").html(oneQuest.solution);
   $(".solution").css("display", "flex");
-  console.log("yo");
+  //console.log("add solution clcked");
 }
 
 // QUESTION IS FALSE
 $(".false").click(function() {
-  sounds[1].play();
+  sounds[0].play();
 
   $(".left-side").css("display", "flex");
   $(".question")
@@ -128,15 +130,17 @@ $(".false").click(function() {
       .removeClass("col-6")
       .addClass("col-12");
     $(".solution").removeClass("col-6");
-  }, 500);
+  }, 3500);
 
   if (allQuestions.length > 0) {
     if (allQuestions[0].category.includes("false")) {
+      sounds[3].play();
+
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
         "url(./images/truecoin.png)"
       );
-      console.log("clicked on false - if");
+      //console.log("clicked on false - if");
       addSolution();
       allQuestions.shift();
 
@@ -147,8 +151,9 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 500);
+      }, 3500);
     } else {
+      sounds[2].play();
       $(`ul li:nth-child(${counter})`).css(
         "backgroundImage",
         "url(./images/shitcoin.png)"
@@ -164,13 +169,14 @@ $(".false").click(function() {
         updateQuestion();
         GameOver();
         Win();
-      }, 500);
+      }, 3500);
     }
   }
 });
 
 // QUESTION IS TRUE
 $(".true").click(function() {
+  sounds[3].play();
   $(".left-side").css("display", "flex");
   $(".question")
     .addClass("col-6")
@@ -183,14 +189,15 @@ $(".true").click(function() {
       .removeClass("col-6")
       .addClass("col-12");
     $(".solution").removeClass("col-6");
-  }, 500);
+  }, 3500);
   if (allQuestions[0].category.includes("true")) {
+    sounds[1].play();
     $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
       "url(./images/truecoin.png)"
     );
     addSolution();
-    console.log("clicked on true - if");
+    //console.log("clicked on true - if");
     allQuestions.shift();
 
     setTimeout(function() {
@@ -200,16 +207,18 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 500);
+    }, 3500);
   } else {
     // CLICKED ON TRUE BUT WRONG ANWSER
+
+    sounds[2].play();
     $(`ul li:nth-child(${counter})`).css(
       "backgroundImage",
       "url(./images/shitcoin.png)"
     );
     addSolution();
     allQuestions.shift();
-    console.log("clicked on true - else");
+    //console.log("clicked on true - else");
 
     errorCounter++;
 
@@ -220,14 +229,13 @@ $(".true").click(function() {
       updateQuestion();
       GameOver();
       Win();
-    }, 500);
+    }, 3500);
   }
 });
 
 function GameOver() {
   if (errorCounter >= 3) {
     $(".game-end").css("display", "flex");
-
     disableBtn();
   }
 }
@@ -241,17 +249,12 @@ function Win() {
 
 function disableBtn() {
   // document.getElementsByClassName("btn-blocked").prop("disabled", true);
-  document.getElementsByClassName("btn-blocked").disable = true;
+  // $("btn-blocked").disable = true;
+  // return ($(".btn-blocked").disable = true);
+  return $(".btn-blocked").prop("disabled", true);
 }
 
 function enableBtn() {
   // document.getElementsByClassName("btn-blocked").prop("disabled", false);
-  document.getElementsByClassName("btn-blocked").disable = true;
+  return $(".btn-blocked").prop("disabled", false);
 }
-
-// STEPS :
-// Validate the question (true/false)
-// Put the right coin in the wallet
-// display the pop-up
-// update all counters
-// update the question
